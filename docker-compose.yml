@@ -1,0 +1,16 @@
+postgres-data:
+  image: busybox
+  volumes:
+      - /var/lib/postgresql/data
+  container_name: postgres-datastore
+
+postgresql:
+  image: postgres
+  environment:
+    POSTGRES_USER: niconico
+    POSTGRES_PASSWORD: p@ssw0rd
+  ports:
+    - "5432:5432"
+  container_name: postgres-db
+  volumes_from:
+      - postgres-data
